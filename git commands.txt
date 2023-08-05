@@ -1,0 +1,63 @@
+Git commands
+------------------------
+git init							->		initialise folder
+git clone <repo-url>:				->		clone a project
+git add .							->		add any file on the folder to the project
+git add file.txt					-> 		add file to project
+git rm file.txt						-> 		remove file from the project
+git commit -m 'message' 			-> 		commit changes on the local repository
+git commit -add						-> 		commit any files added with 'git add' to the local repository
+
+
+git checkout -b <branch-name>		-> 		create a new branch and switch to it
+git checkout <branch-name>			-> 		switch from current to the new branch
+git branch 							-> 		list all branches in the repository
+git branch -d <branch-name>			-> 		delete current branch
+git push --all origin				-> 		push all branches to the remote repository
+
+git pull							-> 		fetch changes on the remote and merge to the local repository
+git merge <branch-name>				->		merge a different branch in to the active one
+git diff 							-> 		view all merge conflicts
+git diff --base <file-name>			-> 		view conflicts against base file
+git diff <source-branch> <target-branch>	-> preview changes before merging, show all conflicts
+
+git tag 1.0.0 <commitID>			-> 		mark significant changeset such as a release by tagging
+git log								-> 		CommitId is the leading characters of the changeset ID, up to 10, but must be unique. Get the ID using:
+git push --tags	origin 				->		push all tags to remote repository
+git checkout -- <file-name>			->		undo local changes execept already added to the index and new files added
+
+git fetch origin
+git reset --hard origin/master		->		fetch the latest history form the server and point local master branch at it
+git grep "foo()" 					->		search the working directory for foo();
+
+git push origin master				->		send change to the master/main branch
+git push origin <branch-name> 		->		push branch to the remote repository
+git status 							->		list the files added to the local repository
+git remote add origin <....git>		->		connect remote repository to the local one
+git remote -v						-> 		list all currently configured repositories
+git remove rm <repo-name>			->		remove a repository from the configuration
+
+*** For modified files, you have git add again
+
+Generate SSH key sha/ed25519
+--------------------------------------------
+ssh-keygen -t rsa -b 4096 -C "email@domain.com"
+// default save location is ~/.ssh
+cat ~/.ssh/id_rsa.pub		// show the key
+eval "$(ssh-agent -s)" // command substitution for key add
+ssh-add -K ~/.ssh/id_rsa // without the .pub extension, drop -k for pin
+
+Config git for username and password
+-----------------------------------------
+git config --global credential.helper store			-> store credentials on disk in the default location
+git config --global credential.helper 'store --file ~/.my-credentials'	-> store credentials on disk in the given location
+git config --global credential.helper cache			-> cache the password for 15 minutes to avoid retyping the password
+git config --global credential.helper "cache --timeout=3600"		-> cache the password for an amount
+git config --global user.name "username"
+git config --global user.email "email@domain.com"
+
+
+
+
+
+
